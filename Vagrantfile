@@ -4,8 +4,8 @@ nodes = {
 
 Vagrant.configure("2") do |config|
     # Uncomment one of these. Dummy for the Rackspace provider, precise for vBox or Fusion
-    config.vm.box = "dummy"
-    #config.vm.box = "precise64"
+    #config.vm.box = "dummy"
+    config.vm.box = "precise64"
 
     nodes.each do |prefix, (count, ip_start)|
         count.times do |i|
@@ -17,9 +17,9 @@ Vagrant.configure("2") do |config|
                 box.vm.provision :shell, :path => "#{prefix}.sh"
 
                 config.vm.provider :rackspace do |rs|
-                    rs.username = "user"
-                    rs.api_key  = "key"
-                    rs.flavor   = /512MB/
+        	    rs.username = "user"
+                    rs.api_key  = "key"                    
+		    rs.flavor   = /512MB/
                     rs.image    = /Ubuntu 12.04/
                 end
                 
